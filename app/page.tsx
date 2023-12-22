@@ -46,16 +46,18 @@ export default function Home() {
 
   return (
     <div className='flex flex-col justify-center items-center gap-4'>
-      <div className='w-3/4 p-2 shadow-2xl rounded-lg  bg-gray-50'>
-        <h1 className='text-4xl font-bold w-full text-center m-2'>
+      <div className='w-3/4 p-2 shadow-2xl rounded-lg  bg-gray-50 '>
+        <h1 className='text-4xl font-bold w-full text-center m-2 text-blue-500'>
           Tasks for <span>{currentDate}</span>
         </h1>
         <TodoList todos={tempTodos}/> 
       </div>
-      <div className='w-fit p-2 shadow-2xl'>
-        <h2 className='text-5xl font-bold'>Create a task</h2>
+      <details className='p-2 shadow-2xl w-3/4 bg-gray-50'>
+        <summary className='text-4xl font-bold w-full text-center m-2 text-blue-500 '>
+          Create a task
+        </summary>
         <TodoForm/>
-      </div>
+      </details>
       
     </div>
   )
