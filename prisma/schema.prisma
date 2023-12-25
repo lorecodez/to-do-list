@@ -6,6 +6,16 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model tasks {
+  id String @id @default(uuid())
+  title String 
+  createdAt DateTime
+  due DateTime
+  description String
+  important Boolean
+  completed Boolean 
 }
