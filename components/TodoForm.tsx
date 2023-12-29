@@ -1,21 +1,37 @@
 'use client'
 import React, { useState } from 'react';
 import { MdOutlineStarOutline, MdOutlineStarPurple500 } from "react-icons/md";
+import { createTask } from '@/Utils/utils'
+import { useRouter } from 'next/navigation';
 
 
 export default function TodoForm() {
 
   const [important, setImportant] = useState(false);
-  const [title, setTitle] = useState<string>();
-  const [description, setDescription] = useState<string>();
-  const [due, setDue] = useState<Date>();
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [due, setDue] = useState<Date>(new Date());
 
   const handleImportant = () => {
     setImportant((prev) => !prev)
   }
 
+  const router = useRouter()
+
   const handleSubmit = (e: any ) => {
-    e.preventDefault();
+
+    e.preventDefault()
+
+    createTask({
+      title,
+      description,
+      due,
+      createdAt: new Date(),
+      important,
+      completed: false,
+    })
+
+    router.refresh()
 
   }
 

@@ -1,19 +1,29 @@
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+'use server'
+import type { tasks } from '@prisma/client';
+import { prisma } from '@/prisma/prisma';
+import { transferableAbortSignal } from 'util';
 
-export const createTask = async(task: any) =>{
 
-    const [title, description, createdAt, important, due, completed] = task;
+export const createTask = async(task: tasks) =>{
+    
+    const {title, description, createdAt, important, due, completed} = task;
 
-    await prisma.tasks.create({
-        data: {
-            title,
-            description,
-            createdAt,
-            important,
-            due,
-            completed,
-        },
-    });
+    task && console.log('creating task:' + task)
+
+    try {
+        await prisma.tasks.create({
+            data: {
+                title,
+                description,
+                createdAt,
+                important,
+                due,
+                completed,
+            },
+        });
+    } catch (error) {
+        return 'error: ' + error
+    }
+    return 'task created';
 
 }
