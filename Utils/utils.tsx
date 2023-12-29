@@ -8,7 +8,7 @@ export const createTask = async(task: tasks) =>{
     
     const {title, description, createdAt, important, due, completed} = task;
 
-    task && console.log('creating task:' + task)
+    console.log('creating task:' + task)
 
     try {
         await prisma.tasks.create({
@@ -22,8 +22,24 @@ export const createTask = async(task: tasks) =>{
             },
         });
     } catch (error) {
+        console.log('error creating task: ' + error)
         return 'error: ' + error
     }
-    return 'task created';
+    return 'task successfully created';
 
+}
+
+export const deleteTask = async(id: string) =>{
+
+    try {
+        await prisma.tasks.delete({
+            where: {
+                id,
+            }
+        })
+    } catch (error) {
+        console.log('error deleting task: ' + error)
+        return 'error: ' + error
+    }
+    return 'task successfully deleted'
 }
