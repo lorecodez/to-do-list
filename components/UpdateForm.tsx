@@ -4,8 +4,11 @@ import { MdOutlineStarOutline, MdOutlineStarPurple500 } from "react-icons/md";
 import { createTask } from '@/Utils/utils'
 import { useRouter } from 'next/navigation';
 
+type props = {
+    id: string;
+}
 
-export default function TodoForm() {
+export default function UpdateForm({id}: props) {
 
   const [important, setImportant] = useState(false);
   const [title, setTitle] = useState<string>('');
@@ -22,14 +25,6 @@ export default function TodoForm() {
 
     e.preventDefault()
 
-    createTask({
-      title,
-      description,
-      due,
-      createdAt: new Date(),
-      important,
-      completed: false,
-    })
 
     router.refresh()
 
@@ -38,13 +33,13 @@ export default function TodoForm() {
   return (
     <form
     onSubmit={handleSubmit}
-    className='flex flex-col gap-y-2 text-lg'>
+    className='flex flex-col gap-y-2 text-lg text-black'>
       <div className='flex-col flex'>
         <label>Title</label>
         <input
         title='Title.'
         type='text'
-        placeholder='Title of your task'
+        placeholder='New title of your task'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         className='p-1 border-2 rounded-lg'
@@ -55,7 +50,7 @@ export default function TodoForm() {
         <input
         title='Description.'
         type='text'
-        placeholder='Describe your task'
+        placeholder='New description your task'
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         className='p-1 border-2 rounded-lg'

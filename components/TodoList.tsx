@@ -9,7 +9,7 @@ type props = {
 export default function TodoList({todos}: props) {
 
 
-  const [deleteMode, setDeletMode] = useState(false)
+  const [editMode, setEditMode] = useState(false)
 
   const date = new Date();
 
@@ -22,19 +22,19 @@ export default function TodoList({todos}: props) {
             Tasks for <span>{currentDate}</span>
           </h1>
           <button
-          title='Delete mode.'
+          title='edit mode.'
           type='button'
-          onClick={()=> setDeletMode((prev)=> !prev)}
-          className={`${ deleteMode ? 'bg-red-500' : 'bg-blue-500' } rounded-full px-2 py-1 hover:bg-gray-200 hover:text-blue-200 inline`}
+          onClick={()=> setEditMode((prev)=> !prev)}
+          className={`${ editMode ? 'bg-red-500' : 'bg-blue-500' } rounded-full px-2 py-1 hover:bg-gray-200 hover:text-blue-200 inline text-white transition-all ease-linear`}
           >
-            Delete Tasks
+            Edit Tasks
           </button>
         </div>
         <div className=' overflow-y-scroll flex-col flex gap-4'>
           {todos.map((todo: any, index: number) => 
             <div className=' w-full h-fit'key={index}>
               {/* {console.log(!index)} */}
-              <Task task={todo} deleteMode={deleteMode} />
+              <Task task={todo} editMode={editMode} />
             </div>
           )}
         </div>
