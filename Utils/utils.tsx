@@ -121,25 +121,28 @@ export async function notImportant(id: string){
     }
 }
 
-export async function updateTask(id: string, task: task){
+export async function updateTask(id: string, task: any){
     console.log('updating task id: ' + id)
 
-    // const data = {}
-    // let key: keyof task
-    // Object.keys(task).forEach(key => {
-    //     const value = task[key];
-    //     console.log(`${key}: ${value}`);
-    // });
+    const data = {...task}
     
 
     try {
-        // await prisma.tasks.update({
-        //     where: {
-        //         id,
-        //     },
-        //     data
-        // })
+
+        await prisma.tasks.update({
+            where: {
+                id,
+            },
+            data
+        })
+
+        console.log('task successfully updated')
+
+        return 'task successfully updated'
+
     } catch (error) {
-        
+        console.log('task couldnt be updated error: ' + error)
+
+        return 'task couldnt be updated error: ' + error
     }
 }

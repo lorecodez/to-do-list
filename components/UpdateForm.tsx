@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { MdOutlineStarOutline, MdOutlineStarPurple500 } from "react-icons/md";
-import { createTask } from '@/Utils/utils'
+import { createTask, updateTask } from '@/Utils/utils'
 import { useRouter } from 'next/navigation';
 
 type props = {
@@ -11,9 +11,9 @@ type props = {
 export default function UpdateForm({id}: props) {
 
   const [important, setImportant] = useState(false);
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [due, setDue] = useState<Date>(new Date());
+  const [title, setTitle] = useState<string | undefined>();
+  const [description, setDescription] = useState<string | undefined>();
+  const [due, setDue] = useState<Date | undefined>();
 
   const handleImportant = () => {
     setImportant((prev) => !prev)
@@ -21,10 +21,26 @@ export default function UpdateForm({id}: props) {
 
   const router = useRouter()
 
-  const handleSubmit = (e: any ) => {
+  const handleSubmit = async(e: any ) => {
 
     e.preventDefault()
 
+    const array = [{title: title}, {description: description}, {due: due}, {important: important}]
+    let task = {}
+    
+    array.forEach((item) => {
+      if(item.title){
+        task = {...task, title: item.title}
+      } else if(item.description){
+        task = {...task, description: item.description}
+      } else if(item.due){
+        task = {...task, due: item.due}
+      } else if(item.important){
+        task = {...task, important: item.important}
+      }
+    });
+
+    const response = await updateTask(id, task);
 
     router.refresh()
 
