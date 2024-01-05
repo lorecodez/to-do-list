@@ -99,7 +99,7 @@ export default function UpdateForm({id}: props) {
       value='Submit'
       className='bg-blue-500 rounded p-2 text-white text-3xl hover:bg-gray-200 hover:text-blue-200 transition-all ease-linear'
       >
-        Create Task
+        Update Task
       </button>
     </form>
   )

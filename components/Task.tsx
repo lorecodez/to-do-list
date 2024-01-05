@@ -39,10 +39,6 @@ export default function Task({ task, editMode }: props) {
     router.refresh()
   }
 
-  const handleUpdate = async() => {
-
-  }
-
 
   return (
     <div className='text-2xl w-full h-fit flex flex-col items-center justify-center gap-2 rounded-lg bg-blue-500 text-white px-1 shadow-inner'>
@@ -120,7 +116,7 @@ export default function Task({ task, editMode }: props) {
         }
       </div>
       {view && 
-        <div>
+        <div className='bg-white text-black rounded-lg my-2 p-2 w-full'>
           <p>{task.description}</p>
         </div>
       }
