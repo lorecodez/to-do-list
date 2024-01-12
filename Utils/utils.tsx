@@ -1,11 +1,10 @@
 'use server'
+
 import type { tasks } from '@prisma/client';
 import { prisma } from '@/prisma/prisma';
-import { transferableAbortSignal } from 'util';
-import { Trykker } from 'next/font/google';
+import bcrypt from 'bcryptjs';
 
-
-export const createTask = async(task: tasks) =>{
+export const createTask = async(task: tasks, id: string) =>{
     
     const {title, description, createdAt, important, due, completed} = task;
 
@@ -14,6 +13,7 @@ export const createTask = async(task: tasks) =>{
     try {
         await prisma.tasks.create({
             data: {
+                user_id: id,
                 title,
                 description,
                 createdAt,
@@ -145,4 +145,28 @@ export async function updateTask(id: string, task: any){
 
         return 'task couldnt be updated error: ' + error
     }
+}
+
+export async function signUp(email: string, password: string, username: string){
+    const user = await prisma.users.findUnique({
+        where: {
+            email,
+        },
+    });
+
+    if(user){
+        return 'User already exists';
+    }
+
+    const passwordHash = bcrypt.hashSync(password, 10);
+
+    await prisma.users.create({
+        data: {
+            email,
+            password: passwordHash,
+            username,
+        }
+    })
+
+    return 'Successfully created new user'
 }
