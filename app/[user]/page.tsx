@@ -5,16 +5,23 @@ import TodoForm from '@/components/TodoForm';
 import { prisma } from '@/prisma/prisma';
 
 type Props = {
-    params: { id: string }
+    params: { user: string }
 }
 
 export default async function page({ params }: Props) {
 
 
-  const slug = params.id
+  const slug = params.user
+  
+  const user = await prisma.users.findUnique({
+    where: {
+      email: slug,
+    }
+  })
+
   const todos = await prisma.tasks.findMany({
     where: {
-        user_id: slug,
+        user_id: user!.id,
     }
   });
 

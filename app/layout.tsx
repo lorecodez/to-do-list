@@ -26,7 +26,7 @@ export default function RootLayout({
             <Head/>
           </header>
           {children}
-          <footer>
+          <footer className='bottom-0 absolute'>
             footer goes here
           </footer>
         </Provider>
