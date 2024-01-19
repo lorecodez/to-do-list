@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { signIn, useSession } from 'next-auth/react';
+import { redirect, useRouter } from 'next/navigation';
 
 export default function SignInForm() {
     const router = useRouter();
@@ -12,7 +12,24 @@ export default function SignInForm() {
     const [message, setMessage] = useState('');
     
     const handleSubmit = async () =>{
-        console.log('Submiting sign in')
+        console.log('Submiting sign in');
+
+        try {
+            const response  = await signIn('credentials', {
+                email,
+                password,
+                redirect: false,
+            });
+
+            if(!response || response.ok !== true){
+                setMessage('Email or Password is incorrect');
+            } else {
+                router.refresh();
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {
