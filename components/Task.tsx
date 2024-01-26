@@ -41,7 +41,7 @@ export default function Task({ task, editMode }: props) {
 
 
   return (
-    <div className='text-2xl w-full h-fit flex flex-col items-center justify-center gap-2 rounded-lg bg-blue-500 text-white px-1 shadow-inner'>
+    <div className=' bg-white text-2xl w-full h-fit flex flex-col items-center justify-center gap-2 rounded-lg border text-black p-2 shadow-inner'>
       <div className='flex h-fit w-full items-center justify-between'>
         {update && 
           <div className='bg-gray-400 bg-opacity-40 top-0 left-0 absolute w-screen h-screen flex items-center justify-center'>
@@ -92,7 +92,7 @@ export default function Task({ task, editMode }: props) {
           title='View.'
           type='button'
           onClick={()=> setView((prev)=> !prev)}
-          className='rounded-full py-1 px-4 bg-white text-black hover:bg-gray-200 hover:text-blue-200 text-base transition-all ease-linear'
+          className='rounded-full py-1 px-4 bg-gray-100 text-black hover:bg-gray-200 hover:text-blue-200 text-base transition-all ease-linear'
           >
             View
           </button>
@@ -116,7 +116,7 @@ export default function Task({ task, editMode }: props) {
         }
       </div>
       {view && 
-        <div className='bg-white text-black rounded-lg my-2 p-2 w-full'>
+        <div className='bg-white shadow border text-black rounded-lg my-2 p-2 w-full'>
           <p>{task.description}</p>
         </div>
       }

@@ -51,7 +51,7 @@ export default function TodoForm({user}: Props) {
     onSubmit={handleSubmit}
     className='flex flex-col gap-y-2 text-lg items-center'>
       <div className='flex flex-col gap-y-2 text-lg items-start w-full'>
-        <div className='flex items-center gap-x-5'>
+        <div className='flex items-center gap-x-5 flex-wrap'>
           <div className='flex-col flex w-fit'>
             <label>Title</label>
             <input

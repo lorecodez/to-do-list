@@ -43,19 +43,19 @@ export default async function page() {
 
 
   return (
-    <div className='flex flex-col justify-center items-center gap-4 h-full my-10 p-2'>
-      <h1>
+    <div className='flex flex-col justify-center items-center gap-4 h-full my-10 lg:mt-20 mt-64 p-2'>
+      <h1 className='font-bold text-5xl m-10'>
         Welcome Back {user!.username}
       </h1>
-      <div className='flex flex-row justify-center items-center gap-4 h-full'>
-        <div className='w-3/4 p-2 shadow-2xl rounded-lg  bg-gray-50 max-h-[600px] h-full'>
+      <div className='flex lg:flex-row flex-col justify-center items-start gap-4 h-full w-full'>
+        <div className='w-full p-2 shadow-2xl rounded-lg  bg-gray-100 min-h-[600px]'>
           <Suspense
           fallback={<p>Loading...</p>}
           >
             { todos ? <TodoList todos={todos}/> : <h2>No tasks for today</h2> } 
           </Suspense>
         </div>
-        <div className='p-2 shadow-2xl w-3/4 bg-gray-50 rounded-lg max-h-[600px]'>
+        <div className='p-2 shadow-2xl w-full bg-gray-100 rounded-lg h-fit'>
           <h3 className='text-4xl font-bold w-full text-center m-2 text-black '>
             Create a task
           </h3>
