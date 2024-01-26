@@ -3,9 +3,15 @@ import React, { useState } from 'react';
 import { MdOutlineStarOutline, MdOutlineStarPurple500 } from "react-icons/md";
 import { createTask } from '@/Utils/utils'
 import { useRouter } from 'next/navigation';
+import type { users } from '@prisma/client';
 
 
-export default function TodoForm() {
+type Props = {
+  user: users
+}
+
+
+export default function TodoForm({user}: Props) {
 
   const [important, setImportant] = useState(false);
   const [title, setTitle] = useState<string>('');
@@ -14,15 +20,20 @@ export default function TodoForm() {
 
   const handleImportant = () => {
     setImportant((prev) => !prev)
-  }
+  };
 
-  const router = useRouter()
+  const router = useRouter();
+
+  const {id} = user
+
+  const user_id = id;
 
   const handleSubmit = (e: any ) => {
 
-    e.preventDefault()
+    e.preventDefault();
 
     createTask({
+      user_id,
       title,
       description,
       due,
@@ -38,55 +49,58 @@ export default function TodoForm() {
   return (
     <form
     onSubmit={handleSubmit}
-    className='flex flex-col gap-y-2 text-lg'>
-      <div className='flex-col flex'>
-        <label>Title</label>
-        <input
-        title='Title.'
-        type='text'
-        placeholder='Title of your task'
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className='p-1 border-2 rounded-lg'
-        ></input>
-      </div>
-      <div className='flex-col flex'>
-        <label>Description</label>
-        <input
-        title='Description.'
-        type='text'
-        placeholder='Describe your task'
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        className='p-1 border-2 rounded-lg'
-        ></input>
-      </div>
-      <div className='flex-col flex'>
-        <label>Due date</label>
-        <input
-        title='Due date.'
-        type='date'
-        value={due?.toISOString().split('T')[0]}
-        onChange={(e) => setDue(new Date(e.target.value))}
-        className='p-1 border-2 rounded-lg'
-        />
-      </div>
-      <div className='flex items-center gap-4'>
-        <label>Important</label>
-        <button
-        title='Important.'
-        type='button'
-        onClick={handleImportant}
-        className=' h-10'
-        >
-          {important ? <MdOutlineStarPurple500 size={25} /> : <MdOutlineStarOutline size={25}/> }
-        </button>
+    className='flex flex-col gap-y-2 text-lg items-center'>
+      <div className='flex flex-col gap-y-2 text-lg items-start w-full'>
+        <div className='flex items-center gap-x-5'>
+          <div className='flex-col flex w-fit'>
+            <label>Title</label>
+            <input
+            title='Title.'
+            type='text'
+            placeholder='Title of your task'
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className='p-1 border-2 rounded-lg'
+            ></input>
+          </div>
+          <div className='flex-col flex w-fit'>
+            <label>Due date</label>
+            <input
+            title='Due date.'
+            type='date'
+            value={due?.toISOString().split('T')[0]}
+            onChange={(e) => setDue(new Date(e.target.value))}
+            className='p-1 border-2 rounded-lg '
+            />
+          </div>
+          <div className='flex items-center gap-4 w-full'>
+            <label>Important</label>
+            <button
+            title='Important.'
+            type='button'
+            onClick={handleImportant}
+            className=' h-10'
+            >
+              {important ? <MdOutlineStarPurple500 size={25} /> : <MdOutlineStarOutline size={25}/> }
+            </button>
+          </div>
+        </div>
+        <div className='flex-col flex w-full'>
+          <label>Description</label>
+          <textarea
+          title='Description.'
+          placeholder='Describe your task'
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className='p-1 border-2 rounded-lg h-48 text-left'
+          ></textarea>
+        </div>
       </div>
       <button
       title='Create Task.'
       type='submit'
       value='Submit'
-      className='bg-blue-500 rounded p-2 text-white text-3xl hover:bg-gray-200 hover:text-blue-200 transition-all ease-linear'
+      className='my-7 mt-10 bg-red-500 rounded-full w-1/2 p-2 text-white text-3xl hover:bg-gray-200 hover:text-blue-200 transition-all ease-linear'
       >
         Create Task
       </button>

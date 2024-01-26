@@ -18,16 +18,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className='h-full'>
       <body 
       className={`${inter.className} ${raleway.className} w-full h-full min-h-screen bg-gray-50`}
       >
         <Provider>
-          <header className='mb-4'>
+          <header className='mb-4 absolute top-0 z-20 w-full'>
             <Head/>
           </header>
           {children}
-          <footer className='bottom-0 absolute'>
+          <footer className='bottom-0 relative'>
             footer goes here
           </footer>
         </Provider>

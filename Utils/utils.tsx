@@ -4,16 +4,16 @@ import type { tasks } from '@prisma/client';
 import { prisma } from '@/prisma/prisma';
 import bcrypt from 'bcryptjs';
 
-export const createTask = async(task: tasks, id: string) =>{
+export const createTask = async(task: any) =>{
     
-    const {title, description, createdAt, important, due, completed} = task;
+    const {title, description, createdAt, important, due, completed, user_id} = task;
 
     console.log('creating task:' + task)
 
     try {
         await prisma.tasks.create({
             data: {
-                user_id: id,
+                user_id,
                 title,
                 description,
                 createdAt,

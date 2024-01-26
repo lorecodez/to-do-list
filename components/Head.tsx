@@ -21,7 +21,7 @@ export default async function head() {
       />
       <Link
       href='/auth/sign-out'
-      className='font-raleway bg-red-600 text-white rounded-full px-3 py-2 w-fit text-center hover:bg-red-200 hover:text-gray-400 transition text-xl flex items-center justify-center font-medium shadow-xl'
+      className='font-raleway bg-red-600 text-white rounded-full px-3 py-1 w-fit text-center hover:bg-red-200 hover:text-gray-400 transition text-xl flex items-center justify-center font-medium shadow-xl'
       >
         Sign Out
       </Link>
