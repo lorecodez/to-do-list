@@ -44,7 +44,7 @@ export default async function page() {
 
   return (
     <div className='flex flex-col justify-center items-center gap-4 h-full my-10 lg:mt-20 mt-64 p-2'>
-      <h1 className='font-bold text-5xl m-10'>
+      <h1 className='font-bold text-5xl m-10 drop-shadow-lg'>
         Welcome Back {user!.username}
       </h1>
       <div className='flex lg:flex-row flex-col justify-center items-start gap-4 h-full w-full'>

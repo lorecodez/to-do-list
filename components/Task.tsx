@@ -9,9 +9,10 @@ import { useRouter } from 'next/navigation';
 type props = {
     task: task;
     editMode: boolean;
+    date: string;
 }
 
-export default function Task({ task, editMode }: props) {
+export default function Task({ task, editMode, date }: props) {
 
   const [important, setImportant] = useState(task.important);
   const [completed, setCompleted] = useState(task.completed);
@@ -39,6 +40,15 @@ export default function Task({ task, editMode }: props) {
     router.refresh()
   }
 
+  const due = task.due?.toISOString().split('T')[0];
+
+  let isDue;
+
+  // if(){
+  //   isDue = true;
+  // };
+
+
 
   return (
     <div className=' bg-white text-2xl w-full h-fit flex flex-col items-center justify-center gap-2 rounded-lg border text-black p-2 shadow-inner'>
@@ -65,7 +75,7 @@ export default function Task({ task, editMode }: props) {
         }
         <div className='flex flex-col items-left gap-1'>
           <h2 className='font-bold'>{task.title}</h2> 
-          <span className='text-xl'>Due <span className=' underline'>{task.due?.toISOString().split('T')[0]}</span></span>
+          <span className='text-xl'>Due <span className={`${due == date && 'text-red-500'}underline`}>{due}</span></span>
         </div>
         {editMode ?
         <div className='flex items-center justify-center gap-x-2'>
@@ -94,7 +104,7 @@ export default function Task({ task, editMode }: props) {
           onClick={()=> setView((prev)=> !prev)}
           className='rounded-full py-1 px-4 bg-gray-100 text-black hover:bg-gray-200 hover:text-blue-200 text-base transition-all ease-linear'
           >
-            View
+            {view ? 'Close' : 'View'}
           </button>
           <div className=' flex-col-reverse flex gap-1'>
             <button

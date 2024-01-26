@@ -53,7 +53,7 @@ export default function TodoForm({user}: Props) {
       <div className='flex flex-col gap-y-2 text-lg items-start w-full'>
         <div className='flex items-center gap-x-5 flex-wrap'>
           <div className='flex-col flex w-fit'>
-            <label>Title</label>
+            <label className=' font-bold'>Title</label>
             <input
             title='Title.'
             type='text'
@@ -64,7 +64,7 @@ export default function TodoForm({user}: Props) {
             ></input>
           </div>
           <div className='flex-col flex w-fit'>
-            <label>Due date</label>
+            <label className=' font-bold'>Due date</label>
             <input
             title='Due date.'
             type='date'
@@ -73,8 +73,8 @@ export default function TodoForm({user}: Props) {
             className='p-1 border-2 rounded-lg '
             />
           </div>
-          <div className='flex items-center gap-4 w-full'>
-            <label>Important</label>
+          <div className='flex items-end gap-4 w-full'>
+            <label className=' font-bold'>Click the star to make the task <span className='text-red-500'>Important</span>.</label>
             <button
             title='Important.'
             type='button'
@@ -86,7 +86,7 @@ export default function TodoForm({user}: Props) {
           </div>
         </div>
         <div className='flex-col flex w-full'>
-          <label>Description</label>
+          <label className=' font-bold'>Description</label>
           <textarea
           title='Description.'
           placeholder='Describe your task'
@@ -100,7 +100,7 @@ export default function TodoForm({user}: Props) {
       title='Create Task.'
       type='submit'
       value='Submit'
-      className='my-7 mt-10 bg-red-500 rounded-full w-1/2 p-2 text-white text-3xl hover:bg-gray-200 hover:text-blue-200 transition-all ease-linear'
+      className='font-bold my-7 mt-10 bg-red-500 rounded-full w-1/3 p-2 text-white text-2xl hover:bg-gray-200 hover:text-blue-200 transition-all ease-linear'
       >
         Create Task
       </button>
