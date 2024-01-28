@@ -82,7 +82,7 @@ export default function Task({ task, editMode, date }: props) {
           <button
           title='Delete.'
           type='submit'
-          className='rounded-full py-1 px-4 bg-red-500 hover:bg-gray-200 hover:text-blue-200 text-base transition-all ease-linear'
+          className='rounded-full py-1 px-4 bg-red-500 hover:bg-red-200 hover:text-gray-500 text-base transition-all ease-linear'
           onClick={handleDelete}
           >
             Delete
@@ -90,7 +90,7 @@ export default function Task({ task, editMode, date }: props) {
           <button
           title='Update.'
           type='submit'
-          className='rounded-full py-1 px-4 bg-white text-black hover:bg-gray-200 hover:text-blue-200 text-base transition-all ease-linear'
+          className='rounded-full py-1 px-4 bg-gray-200 text-black hover:bg-gray-50 hover:text-gray-500 text-base transition-all ease-linear'
           onClick={()=> setUpdate((prev)=> !prev)}
           >
             Update
@@ -102,7 +102,7 @@ export default function Task({ task, editMode, date }: props) {
           title='View.'
           type='button'
           onClick={()=> setView((prev)=> !prev)}
-          className='rounded-full py-1 px-4 bg-gray-100 text-black hover:bg-gray-200 hover:text-blue-200 text-base transition-all ease-linear'
+          className='rounded-full py-1 px-4 bg-gray-200 text-black hover:bg-gray-50 hover:text-gray-500 text-base transition-all ease-linear'
           >
             {view ? 'Close' : 'View'}
           </button>
