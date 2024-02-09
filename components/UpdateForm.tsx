@@ -49,7 +49,8 @@ export default function UpdateForm({id}: props) {
   return (
     <form
     onSubmit={handleSubmit}
-    className='flex flex-col gap-y-2 text-lg text-black'>
+    className='flex flex-col gap-y-2 text-lg text-black p-2'>
+      <h1 className='text-3xl'>Update Your Task</h1>
       <div className='flex-col flex'>
         <label>Title</label>
         <input
@@ -97,7 +98,7 @@ export default function UpdateForm({id}: props) {
       title='Create Task.'
       type='submit'
       value='Submit'
-      className='bg-blue-500 rounded p-2 text-white text-3xl hover:bg-gray-200 hover:text-blue-200 transition-all ease-linear'
+      className='bg-red-600 rounded p-2 text-white text-3xl hover:bg-red-200 hover:text-gray-400 transition-all ease-linear font-bold'
       >
         Update Task
       </button>
