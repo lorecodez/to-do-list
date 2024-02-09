@@ -18,6 +18,9 @@ export default function SignInForm() {
     const handleSubmit = async () =>{
         console.log('Submiting sign in');
 
+        const cleanEmail = email.toString().toLowerCase().trim();
+        const cleanPassword = password.toString().trim();
+
         try {
             const response  = await signIn('credentials', {
                 email,
@@ -29,12 +32,12 @@ export default function SignInForm() {
                 setMessage('Email or Password is incorrect');
             } else {
                 router.refresh();
-            }
+            };
 
         } catch (error) {
             console.log(error);
-        }
-    }
+        };
+    };
 
     useEffect(() => {
         if(status === 'authenticated') {

@@ -15,7 +15,7 @@ export default function SignUpForm() {
         console.log('Submiting sign up')
         setMessage('Siging Up...')
         
-        const message = await signUp(email, password, username);
+        const message = await signUp(email.toString().toLowerCase().trim(), password.toString().trim(), username.toString());
 
         setMessage(message);
     }
