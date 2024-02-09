@@ -32,10 +32,13 @@ export default function TodoForm({user}: Props) {
 
     e.preventDefault();
 
+    const cleanTitle = title.toString().trim()
+    const cleanDescription = description.toString().trim()
+
     createTask({
       user_id,
-      title,
-      description,
+      cleanTitle,
+      cleanDescription,
       due,
       createdAt: new Date(),
       important,

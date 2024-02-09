@@ -30,9 +30,9 @@ export default function UpdateForm({id}: props) {
     
     array.forEach((item) => {
       if(item.title){
-        task = {...task, title: item.title}
+        task = {...task, title: item.title.toString().trim()}
       } else if(item.description){
-        task = {...task, description: item.description}
+        task = {...task, description: item.description.toString().trim()}
       } else if(item.due){
         task = {...task, due: item.due}
       } else if(item.important){
