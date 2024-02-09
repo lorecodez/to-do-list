@@ -82,7 +82,7 @@ export default function Task({ task, editMode, date }: props) {
           <button
           title='Delete.'
           type='submit'
-          className='rounded-full py-1 px-4 bg-red-500 hover:bg-red-200 hover:text-gray-500 text-base transition-all ease-linear'
+          className='rounded-full py-1 px-4 bg-red-500 hover:bg-red-200 hover:text-gray-500 text-base transition-all ease-linear text-white'
           onClick={handleDelete}
           >
             Delete
