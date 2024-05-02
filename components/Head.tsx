@@ -1,13 +1,10 @@
-import { authoptions } from '@/app/api/auth/[...nextauth]/route';
-import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import React from 'react';
 import Image from "next/image";
 import TaskMasterLogo from "@/public/taskmasterlogo.svg";
 
-export default async function head() {
+export default function head() {
 
-  const session = await getServerSession(authoptions);
 
   return (
     <div className='w-full flex justify-between p-4'>

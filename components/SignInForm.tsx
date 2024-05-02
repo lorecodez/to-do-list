@@ -44,7 +44,7 @@ export default function SignInForm() {
             router.refresh();
             router.push(`/home`);
         };
-    }, [status])
+    }, [status, router])
 
     
   return (

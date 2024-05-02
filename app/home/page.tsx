@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { prisma } from '@/prisma/prisma';
 import { Suspense, lazy } from 'react';
 import { getServerSession } from 'next-auth';
-import { authoptions } from '../api/auth/[...nextauth]/route';
+import { authoptions } from '../lib/auth';
 
 // type Props = {
 //     params: { user: string }
