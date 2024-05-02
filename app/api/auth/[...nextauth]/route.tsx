@@ -1,4 +1,3 @@
-'use server'
 import NextAuth from "next-auth";
 import { authoptions } from "@/app/lib/auth";
 
